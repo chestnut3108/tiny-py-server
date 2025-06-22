@@ -44,3 +44,8 @@ CONTENT_TYPE_APPLICATION_OCTET_STREAM = 'application/octet-stream'
 
 # --- Default Headers ---
 DEFAULT_SERVER_NAME = 'PythonCustomHTTP/0.1'
+
+
+HTTP_METHOD_POST = 'POST'
+HTTP_METHOD_GET = 'GET'
+HTTP_METHOD_PUT = 'PUT'

@@ -1,5 +1,5 @@
 import socket
-
+from constants.HttpConstants import *
 def start_server(router, host='127.0.0.1', port=8080):
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -21,10 +21,10 @@ def start_server(router, host='127.0.0.1', port=8080):
         except Exception:
             path = '/'
 
-        if router.does_path_exist(path):
-            handler = router.get_handler(path)
+        if router.does_path_exist(path, method):
+            handler = router.get_handler(path, method)
         else:
-            handler = router.get_handler('/')
+            handler = router.get_handler('/', HTTP_METHOD_GET)
 
         response = handler()
         client_conn.sendall(response.encode())

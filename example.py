@@ -7,7 +7,7 @@ from server import start_server
 
 router = Router()
 
-@router.route('/test1')
+@router.route('/test1', HTTP_METHOD_GET)
 def test1():
     return HttpResponse().prepareResponse(
         HTTP_200_OK,
@@ -15,7 +15,7 @@ def test1():
         "<html><body><h1>test 11!</h1></body></html>"
     )
 
-@router.route('/test2')
+@router.route('/test2', HTTP_METHOD_GET)
 def test2():
     return HttpResponse().prepareResponse(
         HTTP_200_OK,
@@ -23,7 +23,7 @@ def test2():
         "<html><body><h1>test 22!</h1></body></html>"
     )
 
-@router.route('/')
+@router.route('/', HTTP_METHOD_GET)
 def default_handler():
     return HttpResponse().prepareResponse(
         HTTP_404_NOT_FOUND,

@@ -59,7 +59,7 @@ curl http://localhost:8080/test1
 
 ## ✅ To-Do (Ideas)
 
-- [ ] Support `POST` method  
+- [/] Support `POST` method  
 - [ ] Add static file serving (`/static/`)  
 - [ ] Logging with timestamps  
 - [ ] JSON response helper  
