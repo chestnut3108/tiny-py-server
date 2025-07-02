@@ -17,7 +17,7 @@ def test1( httpRequest):
 
 @router.route('/test2', HTTP_METHOD_GET)
 def test2( httpRequest):
-    print(httpRequest.queryParams)
+    print(httpRequest.query_params)
     return HttpResponse().prepareResponse(
         HTTP_200_OK,
         CONTENT_TYPE_TEXT_HTML,

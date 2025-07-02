@@ -1,7 +1,7 @@
 import socket
 from constants.HttpConstants import *
 from utils.HttpRequest import HttpRequest
-from urllib.parse import parse_qs
+from utils.HttpRequest import HttpRequest
 
 def start_server(router, host='127.0.0.1', port=8080):
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -18,23 +18,17 @@ def start_server(router, host='127.0.0.1', port=8080):
 
         print("Received request:")
         print(request_data)
-
         try:
-            request_line = request_data.splitlines()[0]
-            method, path, _ = request_line.split()
+            request = HttpRequest(request_data)
         except Exception:
             path = '/'
 
-        path, _, query_params = path.partition('?')
-        query_params = parse_qs(query_params)
-        print("path " + path)
-        print("query_params {}" .format( query_params))
+        print("path " + request.path)
+        print("query_params {}" .format( request.query_params))
 
 
-        handler = router.get_handler(path, method)
+        handler = router.get_handler(request.path, request.method)
         
-        httpRequest = HttpRequest(None, query_params, None)
-
-        response = handler(httpRequest)
+        response = handler(request)
         client_conn.sendall(response.encode())
         client_conn.close()
